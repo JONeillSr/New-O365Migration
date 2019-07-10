@@ -44,7 +44,7 @@ Param
 
 # Specify what email to send migration report
 [Parameter(Mandatory=$false,HelpMessage='Specify the notification address for migration batch reports. Example: "Notifications@somedomain.com"')]
-[String]$NotifyAddress = 'JONeillSr@moldedfiberglass.com',
+[String]$NotifyAddress = 'Notifications@somedomain.com',
 
 # Specify if batch is to automatically complete
 [Parameter(Mandatory=$false)]
@@ -59,7 +59,7 @@ If ($MigrationBatchName -eq "") {
 
 function Create-Batch {
     # Get migration endpoint from Exchange Online
-    $MigrationEndpointOnprem = Get-MigrationEndpoint -Identity Cinder_OnPrem2016
+    $MigrationEndpointOnprem = Get-MigrationEndpoint -Identity Server_OnPrem2016
 
     If ($CompleteBatch -eq $True) {
         New-MigrationBatch -Name $MigrationBatchName -SourceEndpoint $MigrationEndpointOnprem.Identity -TargetDeliveryDomain moldedfiberglass.mail.onmicrosoft.com -NotificationEmails $NotifyAddress -AutoComplete -CSVData ([System.IO.File]::ReadAllBytes($ImportFileName))
