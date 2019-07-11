@@ -57,7 +57,7 @@ If ($MigrationBatchName -eq "") {
     $MigrationBatchName = "MigBatch$DateCode"+"_MoveToO365"
 }
 
-function Create-Batch {
+function New-Batch {
     # Get migration endpoint from Exchange Online
     $MigrationEndpointOnprem = Get-MigrationEndpoint -Identity Server_OnPrem2016
 
@@ -79,4 +79,4 @@ function Create-Batch {
     }
 }
 
-Create-Batch
+New-Batch
