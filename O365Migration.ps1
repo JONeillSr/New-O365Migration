@@ -92,7 +92,7 @@ Param
 
 # Specify what email to send migration report
 [Parameter(Mandatory=$false,HelpMessage='Specify the notification address for migration batch reports. Example: "Notifications@somedomain.com"')]
-[String]$NotifyAddress = 'JONeillSr@moldedfiberglass.com',
+[String]$NotifyAddress = 'notavalidaddress@somedomain.com',
 
 # Specify if the desire is only to get running batch information
 [Parameter(Mandatory=$false, ParameterSetName='GetBatchStatus')]
@@ -118,7 +118,7 @@ function New-Batch {
     # Create a new Echange Online migration batch
     
     # Get migration endpoint from Exchange Online
-    $MigrationEndpointOnprem = Get-MigrationEndpoint -Identity Cinder_OnPrem2016
+    $MigrationEndpointOnprem = Get-MigrationEndpoint -Identity Alias_OnPrem2016
 
     # Migration batch name wasn't specified, generate name
     If ($MigrationBatchName -eq "") {
